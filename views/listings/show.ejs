@@ -92,6 +92,9 @@
 <%}%>
 
 </div>
+<div class="invisible" id="latitude"><%= place.geometry.lat %></div>
+<div class="invisible" id="longitude"><%= place.geometry.lng %></div>
+
 <div class="col-8 mb-3">
     <h3>where you will be</h3>
     <div id="map"></div>
@@ -99,15 +102,34 @@
  </div>
  
   <script>
+// const latitude = document.getElementById('latitude').getAttribute('data-latitude');
+// const longitude = document.getElementById('longitude').getAttribute('data-longitude');
+const latitude = document.getElementById('latitude').textContent;
+const longitude = document.getElementById('longitude').textContent;  
+// const location = document.getElementById('location').textContent;  
 
+//         console.log(latitude);
 
-    var map = L.map('map').setView([21.1463, 79.0849], 13);
+    var map = L.map('map').setView([latitude,longitude], 13);
 
     
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 19,
+//     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// }).addTo(map);
+
+
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; <a href="https://www.esri.com">Esri</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
 }).addTo(map);
 
-var marker = L.marker([21.1463, 79.0849]).addTo(map);
+
+
+var marker = L.marker([latitude,longitude]).addTo(map);
+marker.bindPopup("<b><%=listing.location%></b><br>precise location will be provided after booking.").openPopup();
+// var popup = L.popup()
+//     .setLatLng([51.513, -0.09])
+//     .setContent("I am a standalone popup.")
+//     .openOn(map);
  </script> 

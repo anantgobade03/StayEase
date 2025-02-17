@@ -1,6 +1,6 @@
 const Listing = require("../models/listing");
 
-// const opencage = require('opencage-api-client');
+const opencage = require('opencage-api-client');
 
 
 module.exports.index = async (req, res) => {
@@ -23,43 +23,43 @@ module.exports.showListing = async (req, res) => {
 
     // let latit = 79.0849;
     // let longi= 21.1463;
-    // // note that the library takes care of URI encoding
-    // opencage
-    // .geocode({ q: listing.location })
-    //     .then((data) => {
-    //   // console.log(JSON.stringify(data));
-    //   if (data.status.code === 200 && data.results.length > 0) {
-    //     const place = data.results[0];
-    //   //   console.log(place.formatted);
-    //       // console.log(place.geometry);
-    //       latit = place.geometry.lat;
-    //       longi = place.geometry.lng;
-    //     //   console.log(latit);
-    //     //   console.log(longi);
-    //   //   console.log(place.annotations.timezone.name);
-    //   } else {
-    //     console.log('Status', data.status.message);
-    //     console.log('total_results', data.total_results);
-    //   }
-    // })
-    // .catch((error) => {
-    //   // console.log(JSON.stringify(error));
-    //   console.log('Error', error.message);
-    //   // other possible response codes:
-    //   // https://opencagedata.com/api#codes
-    //   if (error.status.code === 402) {
-    //     console.log('hit free trial daily limit');
-    //     console.log('become a customer: https://opencagedata.com/pricing');
-    //   }
-    // });
-    
-    // // ... prints
-    // // Theresienhöhe 11, 80339 Munich, Germany
-    // // { lat: 48.1341651, lng: 11.5464794 }
-    //     // Europe/Berlin
-            
+    // note that the library takes care of URI encoding
+opencage
+.geocode({ q: listing.location })
+.then((data) => {
+  // console.log(JSON.stringify(data));
+  if (data.status.code === 200 && data.results.length > 0) {
+    const place = data.results[0];
+    // console.log(place.formatted);
+    //   console.log(place.geometry);
+    //   latit = place.geometry.lat;
+    //   longi = place.geometry.lng;
+      res.render("listings/show.ejs", { listing, place });
+    // console.log(place.annotations.timezone.name);
+  } else {
+    console.log('Status', data.status.message);
+    console.log('total_results', data.total_results);
+  }
+})
+.catch((error) => {
+  // console.log(JSON.stringify(error));
+  console.log('Error', error.message);
+  // other possible response codes:
+  // https://opencagedata.com/api#codes
+  if (error.status.code === 402) {
+    console.log('hit free trial daily limit');
+    console.log('become a customer: https://opencagedata.com/pricing');
+  }
+});
 
-    res.render("listings/show.ejs", { listing });
+// ... prints
+// Theresienhöhe 11, 80339 Munich, Germany
+// { lat: 48.1341651, lng: 11.5464794 }
+    // Europe/Berlin
+    // console.log(latit);
+    // console.log(longi);
+
+    // res.render("listings/show.ejs", { listing });
 };
 
 

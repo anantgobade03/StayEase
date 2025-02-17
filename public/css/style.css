@@ -116,3 +116,7 @@ body{
     height: 400px;
     width: 60vh;
 }
+
+.invisible{
+    display: none;
+}
