@@ -46,10 +46,10 @@ const sessionOptions = {
     },
 };
 
-// //index route
-// app.get("/", (req, res) => {
-//     res.send("sample");
-// });
+//index route
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 
 
@@ -107,6 +107,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 //     let registeredUser = await User.register(fakeUser, "helloworld");
 //     res.send(registeredUser);
 // });
+
+
 
 app.use("/listings", listingRouter);
 
