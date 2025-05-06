@@ -18,3 +18,6 @@ StayEase is a full-stack accommodation listing platform designed for seamless pr
 ## Live website
 ```bash
    airb-ko1u.onrender.com/listings
+```
+
+##(Note: UI is in development stage)
