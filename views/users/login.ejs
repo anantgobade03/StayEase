@@ -1,19 +1,26 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-3">
-    <h1 class="col-6 offset-3">login for wanderlust</h1>
-    <div class="col-6 offset-3">
-        <form action="/login" method="post" novalidate class="needs-validation">
-            <div class="mb-3">
-                <label for="username" class="form-lable">username</label>
-                <input type="text" id="username" name="username" class="form-control" required>  
-                 
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4 text-primary">Login to Wanderlust</h2>
+                    <form action="/login" method="post" novalidate class="needs-validation">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-success btn-block">Login</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-lable">password</label>
-                <input type="password" id="password" name="password" class="form-control" required>  
-            </div>
-            <button class="btn btn-success">login</button>
-        </form>
+        </div>
     </div>
 </div>

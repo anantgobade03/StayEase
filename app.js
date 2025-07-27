@@ -20,6 +20,7 @@ const passport = require("passport");
 const LocalStartegy = require("passport-local");
 const User = require("./models/user.js");
 
+
 const dbUrl = process.env.ATLASDB_URL;
 
 const store = MongoStore.create({
